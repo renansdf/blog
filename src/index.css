@@ -1,0 +1,10 @@
+html, body{
+  font-family: 'IBM Plex Serif', serif;
+  color: #000000d6;
+  line-height: 1.3em;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
