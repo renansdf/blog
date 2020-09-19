@@ -24,7 +24,6 @@ export const BlogBody = styled.div`
   background-position: center;
   background-size: contain;
   border: 1px solid #fff4eb;
-  border-bottom: none;
 
   header{
     width: 90%;
@@ -61,6 +60,20 @@ export const BlogBody = styled.div`
       max-width: 400px;
     }
   }
+
+  @media(max-width: 850px){
+    padding: 30px 15px;
+    header img{
+      display: none;
+    }
+    header h1{
+      font-size: 30px;
+    }
+    header p{
+      font-size: 18px;
+      line-height: 1.5em
+    }
+  }
 `
 
 export const SocialNetworks = styled.div`
@@ -91,6 +104,29 @@ export const SocialNetworks = styled.div`
     width: 100%;
     border-radius: 50%;
     box-shadow: 0 6px 18px -3px rgb(10 35 20);
+  }
+
+  @media(max-width: 650px){
+    position: relative;
+    flex-direction: row;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 0;
+    border-top: 1px solid #fff4eb;
+    
+    a{
+      margin: 0 10px;
+    }
+
+    a + a{
+      margin-top: 0;
+    }
+    img{
+      box-shadow: 0 6px 18px -3px rgb(10 35 20 / 15%);
+    }
   }
 `
 
@@ -125,7 +161,7 @@ export const Post = styled.article`
       text-transform: uppercase;
       font-size: 13px;
       padding: 10px 0;
-      box-shadow: 0 6px 18px -3px rgb(10 35 20);
+      box-shadow: 0 6px 18px -3px rgb(10,35,20);
       transition: all .4s;
 
       &:hover{
@@ -153,6 +189,9 @@ export const Post = styled.article`
   p{
     font-size: 18px;
     line-height: 1.5em;
+    a{
+      color: #ff7300;
+    }
   }
 
   p + p{
@@ -189,5 +228,37 @@ export const Post = styled.article`
     transform: translateX(-90%) rotate(-90deg);
     line-height: 1em;
   }
+  
+  @media (max-width: 1000px){
+    div{
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 0;
+      a{
+        display: none;
+        width: auto;
+        padding: 3px 10px;
+        font-size: 10px;
+      }
+    }
+
+    h1{
+      width: 100%;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+
+    strong{
+      position: relative;
+      font-size: 18px;
+      margin-bottom: 30px;
+      display: block;
+      transform: none;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+  }
 `
+
 export const Signature = styled.div``

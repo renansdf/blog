@@ -4,6 +4,8 @@ import { RichText } from 'prismic-reactjs'
 import { client, linkResolver } from '../../prismic-configuration'
 import NotFound from '../NotFound'
 import { Container, Content } from './styles'
+import Navbar from '../../components/Navbar/index'
+import Footer from '../../components/Footer/index'
 
 const Post = ({ match }) => {
   const [doc, setDocData] = useState(null)
@@ -33,12 +35,16 @@ const Post = ({ match }) => {
     console.log(doc.data);
     return (
       <Container>
-        <div style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></div>
+        <Navbar />
+
+        <h1>{RichText.asText(doc.data.title)}</h1>
+        <figure style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></figure>
         <Content className="Post">
-          <h1>{RichText.asText(doc.data.title)}</h1>
           <div dangerouslySetInnerHTML={{ __html: doc.data.video.html }} />
           <RichText render={doc.data.content} linkResolver={linkResolver} />
         </Content>
+
+        <Footer />
       </Container>
     )
   } else if (notFound) {

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Prismic from 'prismic-javascript'
-import { client } from '../../prismic-configuration'
+import { client, linkResolver } from '../../prismic-configuration'
+import { RichText } from 'prismic-reactjs'
 import NotFound from '../NotFound'
 import { Container, PostList, Post, SocialNetworks, BlogBody, Signature } from './styles'
 import { Link } from 'react-router-dom'
 
 import Navbar from '../../components/Navbar/index'
+import Footer from '../../components/Footer/index'
 
 const Blog = () => {
   const [posts, setPosts] = useState(null)
@@ -52,11 +54,10 @@ const Blog = () => {
                   <h1>{post.data.title[0].text}</h1>
                   <Link to={`/post/${post.uid}`} >Leia Mais</Link>
                 </div>
-                <img src={post.data.cover.url} alt={post.data.cover.alt} />
-                <p>{post.data.content[0].text}</p>
-                <p>{post.data.content[1].text}</p>
-                <Link to={`/post/${post.uid}`} >Leia Mais</Link>
                 <strong>{post.data.month}</strong>
+                <img src={post.data.cover.url} alt={post.data.cover.alt} />
+                <RichText render={post.data.resumo} linkResolver={linkResolver} />
+                <Link to={`/post/${post.uid}`} >Leia Mais</Link>
               </Post>
             ))}
           </PostList>
@@ -71,13 +72,8 @@ const Blog = () => {
           <Signature />
 
         </BlogBody>
+        <Footer />
       </Container >
-      //   <div style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></div>
-      //   <Content className="Post">
-      //     <h1>{RichText.asText(doc.data.title)}</h1>
-      //     <div dangerouslySetInnerHTML={{ __html: doc.data.video.html }} />
-      //     <RichText render={doc.data.content} linkResolver={linkResolver} />
-      //   </Content>
     )
   } else if (notFound) {
     return <NotFound />

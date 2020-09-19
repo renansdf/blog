@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.nav`
   width: 90%;
   max-width: 1200px;
   display: flex;
