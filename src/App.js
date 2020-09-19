@@ -7,9 +7,11 @@ import {
 } from 'react-router-dom'
 import { apiEndpoint } from './prismic-configuration'
 import { Help, Preview, NotFound, Post, Blog } from './pages'
-
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-77750042-4');
+ReactGA.pageview(window.location.pathname + window.location.search);
 /**
- * Main application componenet
+ * Main application component
  */
 const App = (props) => {
   const repoNameArray = /([^/]+)\.cdn.prismic\.io\/api/.exec(apiEndpoint)
