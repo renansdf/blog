@@ -43,7 +43,7 @@ export const BlogBody = styled.div`
     h1{
       font-size: 50px;
       line-height: 1.2em;
-      max-width: 600px;
+      max-width: 610px;
     }
 
     img{
