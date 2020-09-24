@@ -40,7 +40,7 @@ const Blog = () => {
 
           <header>
             <div>
-              <h1>Desenvolvedor full stack e designer de intefaces</h1>
+              <h1>Desenvolvedor Javascript e designer de intefaces</h1>
               <p>Escrevo sobre projetos e novidades sobre jogos, aplicações web e eventos.</p>
             </div>
 
