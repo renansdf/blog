@@ -220,12 +220,13 @@ export const Post = styled.article`
   }
 
   strong{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    font-size: 50px;
+    font-size: 16px;
+    color: #ff7300;
+    background-color: #fff4eb;
+    padding: 3px 5px;
+    margin-bottom: 14px;
+    display: inline-block;
     font-weight: 400;
-    transform: translateX(-90%) rotate(-90deg);
     line-height: 1em;
   }
   

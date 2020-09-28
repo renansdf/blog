@@ -16,7 +16,8 @@ const Blog = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await client.query(
-        Prismic.Predicates.at('document.type', 'post')
+        Prismic.Predicates.at('document.type', 'post'),
+        { orderings: '[my.post.ordering_date desc]' }
       )
 
       console.log(response);
@@ -50,12 +51,14 @@ const Blog = () => {
           <PostList>
             {posts.results.map(post => (
               <Post key={post.id}>
+                <strong>{post.data.month}</strong>
                 <div>
                   <h1>{post.data.title[0].text}</h1>
                   <Link to={`/post/${post.uid}`} >Leia Mais</Link>
                 </div>
-                <strong>{post.data.month}</strong>
-                <img src={post.data.cover.url} alt={post.data.cover.alt} />
+                {post.data.cover.url && (
+                  <img src={post.data.cover.url} alt={post.data.cover.alt} />
+                )}
                 <RichText render={post.data.resumo} linkResolver={linkResolver} />
                 <Link to={`/post/${post.uid}`} >Leia Mais</Link>
               </Post>

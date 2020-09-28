@@ -38,7 +38,9 @@ const Post = ({ match }) => {
         <Navbar />
 
         <h1>{RichText.asText(doc.data.title)}</h1>
-        <figure style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></figure>
+        {doc.data.cover.url && (
+          <figure style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></figure>
+        )}
         <Content className="Post">
           <div dangerouslySetInnerHTML={{ __html: doc.data.video.html }} />
           <RichText render={doc.data.content} linkResolver={linkResolver} />
