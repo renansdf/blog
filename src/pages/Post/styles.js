@@ -76,6 +76,10 @@ export const Content = styled.div`
     font-size: 18px;
     line-height: 1.7em;
     margin-bottom: 20px;
+
+    img{
+      max-width: 100%;
+    }
   }
 
   a{
