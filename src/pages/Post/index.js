@@ -1,11 +1,13 @@
 // In src/pages/Page.js
 import React, { useEffect, useState } from 'react'
 import { RichText } from 'prismic-reactjs'
+
+import { Link } from 'react-router-dom'
 import { client, linkResolver } from '../../prismic-configuration'
 import NotFound from '../NotFound'
-import { Container, Content } from './styles'
-import Navbar from '../../components/Navbar/index'
 import Footer from '../../components/Footer/index'
+
+import { Wrapper, Container, Content } from './styles'
 
 const Post = ({ match }) => {
   const [doc, setDocData] = useState(null)
@@ -32,22 +34,22 @@ const Post = ({ match }) => {
   }, [uid]) // Skip the Effect hook if the UID hasn't changed
 
   if (doc) {
-    console.log(doc.data);
     return (
-      <Container>
-        <Navbar />
+      <Wrapper>
+        <Container>
+          <Link to="/">Back</Link>
+          <h1>{RichText.asText(doc.data.title)}</h1>
+          {doc.data.cover.url && (
+            <figure style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></figure>
+          )}
+          <Content className="Post">
+            <div dangerouslySetInnerHTML={{ __html: doc.data.video.html }} />
+            <RichText render={doc.data.content} linkResolver={linkResolver} />
+          </Content>
 
-        <h1>{RichText.asText(doc.data.title)}</h1>
-        {doc.data.cover.url && (
-          <figure style={{ backgroundImage: "url(" + doc.data.cover.url + ")" }} ></figure>
-        )}
-        <Content className="Post">
-          <div dangerouslySetInnerHTML={{ __html: doc.data.video.html }} />
-          <RichText render={doc.data.content} linkResolver={linkResolver} />
-        </Content>
-
+        </Container>
         <Footer />
-      </Container>
+      </Wrapper>
     )
   } else if (notFound) {
     return <NotFound />

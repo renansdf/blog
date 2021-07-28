@@ -1,33 +1,51 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  color: #fff4eb;
+  padding-top: 100px;
+`;
 
-  background: rgb(24,71,43);
-  background: url('/images/bg1.png'), linear-gradient(164deg, rgb(19,60,35) 0%, rgba(22,94,59,1) 100%);
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: #000;
+  max-width: 570px;
+  width: 90%;
 
   h1{
     font-size: 50px;
     line-height: 1.2em;
-    max-width: 1200px;
-    width: 90%;
-    margin-bottom: 50px;
+    width: 100%;
+    margin-bottom: 35px;
+    font-weight: 300;
   }
 
   figure{
-    width: 90%;
-    height: 500px;
-    max-width: 1200px;
+    width: 100%;
+    height: 300px;
     background-size: cover;
     background-repeat: none;
     background-position: center;
-    border: 1px solid #fff4eb;
+    border: 2px solid #ff0025;
 
-    margin-bottom: 50px;
+    margin-bottom: 15px;
+  }
+
+  > a{
+    width: auto;
+    color: #ff0025;
+    border: 1px solid #ff0025;
+    letter-spacing: 2px;
+    font-size: 13px;
+    margin-bottom: 20px;
+    padding: 3px 13px;
+    background: transparent;
+    text-decoration: none;
   }
 
   @media (max-width: 750px){
@@ -42,8 +60,7 @@ export const Container = styled.div`
 `
 
 export const Content = styled.div`
-  width: 90%;
-  max-width: 850px;
+  width: 100%;
   box-sizing: border-box;
 
   div{
@@ -51,7 +68,7 @@ export const Content = styled.div`
     margin: 10px 0 30px;
     iframe{
       width: 100%;
-      height: 44vw;
+      height: 34vw;
       max-height: 445px;
       box-shadow: 0 6px 18px -3px rgb(10,35,20);
     }
@@ -66,15 +83,15 @@ export const Content = styled.div`
   }
 
   h2{
-    margin: 50px 0 20px;
+    margin: 50px 0 10px;
     font-size: 30px;
     font-weight: 700;
     line-height: 1em;
   }
 
   p{
-    font-size: 18px;
-    line-height: 1.7em;
+    font-size: 17px;
+    line-height: 1.5em;
     margin-bottom: 20px;
 
     img{
@@ -83,7 +100,12 @@ export const Content = styled.div`
   }
 
   a{
-    color: #ff7300;
+    color: #ff0025;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 22px;
   }
 
   @media (max-width:500px){
