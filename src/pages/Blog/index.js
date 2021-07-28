@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Prismic from '@prismicio/client'
-import { client, linkResolver } from '../../prismic-configuration'
-import { RichText } from 'prismic-reactjs'
-import NotFound from '../NotFound'
-import { Container, PostList, Post, SocialNetworks, BlogBody, Signature } from './styles'
 import { Link } from 'react-router-dom'
+import { RichText } from 'prismic-reactjs'
+
+import { client, linkResolver } from '../../prismic-configuration'
+import NotFound from '../NotFound'
+import Loading from '../../components/Loading'
+import Footer from '../../components/Footer/index'
 
 import githubIcon from '../../images/github.png'
 import linkedinIcon from '../../images/linkedin.png'
 import mailIcon from '../../images/mail.png'
 
-import Footer from '../../components/Footer/index'
+import { Container, PostList, Post, SocialNetworks, BlogBody, Signature } from './styles'
 
 const Blog = () => {
   const [posts, setPosts] = useState(null)
   const [notFound, toggleNotFound] = useState(false)
+  const [loadingVisibility, setLoadingVisibility] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +27,8 @@ const Blog = () => {
       )
 
       if (response) {
-        return setPosts(response)
+        setLoadingVisibility(false)
+        setPosts(response)
       } else {
         console.warn('Posts not found. Make sure it exists in your Prismic repository')
         toggleNotFound(true)
@@ -33,9 +37,14 @@ const Blog = () => {
     fetchData()
   }, [])
 
-  if (posts) {
   return (
-      <Container>
+    <Container>
+      <Loading loadingVisibility={loadingVisibility} />
+      {notFound && (
+        <NotFound />
+      )}
+
+      {posts && (
         <BlogBody>
           <SocialNetworks>
             <a href="https://github.com/renansdf" target="_blank" rel="noopener noreferrer"><img src={githubIcon} alt="Logo do github" /></a>
@@ -67,19 +76,12 @@ const Blog = () => {
               </Post>
             ))}
           </PostList>
-
-
-
           <Signature />
-
         </BlogBody>
-        <Footer />
-      </Container >
-    )
-  } else if (notFound) {
-    return <NotFound />
-  }
-  return null
+      )}
+      <Footer />
+    </Container >
+  )
 }
 
 export default Blog
