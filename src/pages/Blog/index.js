@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Prismic from 'prismic-javascript'
+import Prismic from '@prismicio/client'
 import { client, linkResolver } from '../../prismic-configuration'
 import { RichText } from 'prismic-reactjs'
 import NotFound from '../NotFound'
