@@ -6,7 +6,10 @@ import NotFound from '../NotFound'
 import { Container, PostList, Post, SocialNetworks, BlogBody, Signature } from './styles'
 import { Link } from 'react-router-dom'
 
-import Navbar from '../../components/Navbar/index'
+import githubIcon from '../../images/github.png'
+import linkedinIcon from '../../images/linkedin.png'
+import mailIcon from '../../images/mail.png'
+
 import Footer from '../../components/Footer/index'
 
 const Blog = () => {
@@ -20,8 +23,6 @@ const Blog = () => {
         { orderings: '[my.post.ordering_date desc]' }
       )
 
-      console.log(response);
-
       if (response) {
         return setPosts(response)
       } else {
@@ -33,44 +34,41 @@ const Blog = () => {
   }, [])
 
   if (posts) {
-    console.log(posts);
-    return (
+  return (
       <Container>
-        <Navbar />
         <BlogBody>
+          <SocialNetworks>
+            <a href="https://github.com/renansdf" target="_blank" rel="noopener noreferrer"><img src={githubIcon} alt="Logo do github" /></a>
+            <a href="https://www.linkedin.com/in/renan-sdf" target="_blank" rel="noopener noreferrer"><img src={linkedinIcon} alt="Logo do LinkedIn" /></a>
+            <a href="mailto:renan@defreitas.xyz" target="_blank" rel="noopener noreferrer"><img src={mailIcon} alt="Ícone de email" /></a>
+          </SocialNetworks>
 
           <header>
             <div>
-              <h1>Desenvolvedor Javascript e designer de intefaces</h1>
-              <p>Escrevo sobre projetos e novidades sobre jogos, aplicações web e eventos.</p>
+              <h1>Renan<br />de Freitas</h1>
+              <h2>frontend developer</h2>
+              <p>I write about personal projects, web development and events.</p>
             </div>
-
-            <img src="images/perfil.jpg" alt="Foto de perfil" />
           </header>
 
           <PostList>
             {posts.results.map(post => (
               <Post key={post.id}>
                 <strong>{post.data.month}</strong>
-                <div>
-                  <h1>{post.data.title[0].text}</h1>
-                  <Link to={`/post/${post.uid}`} >Leia Mais</Link>
-                </div>
+                <h3>{post.data.title[0].text}</h3>
                 {post.data.cover.url && (
-                  <img src={post.data.cover.url} alt={post.data.cover.alt} />
+                  <div>
+                    <Link to={`/post/${post.uid}`} >Read<br/>More</Link>
+                    <img src={post.data.cover.url} alt={post.data.cover.alt} />
+                  </div>
                 )}
                 <RichText render={post.data.resumo} linkResolver={linkResolver} />
-                <Link to={`/post/${post.uid}`} >Leia Mais</Link>
+                <Link to={`/post/${post.uid}`} >Read More</Link>
               </Post>
             ))}
           </PostList>
 
-          <SocialNetworks>
-            <a href="https://github.com/renansdf" target="_blank" rel="noopener noreferrer"><img src="images/github.png" alt="Logo do github" /></a>
-            <a href="https://www.linkedin.com/in/renan-freitas-60138b2a/" target="_blank" rel="noopener noreferrer"><img src="images/linkedin.png" alt="Logo do LinkedIn" /></a>
-            <a href="https://www.verticecoletivo.com.br/" target="_blank" rel="noopener noreferrer"><img src="images/vertice.png" alt="Logo da Vértice" /></a>
-            <a href="mailto:renan@defreitas.xyz" target="_blank" rel="noopener noreferrer"><img src="images/mail.png" alt="Ícone de email" /></a>
-          </SocialNetworks>
+
 
           <Signature />
 

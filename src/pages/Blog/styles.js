@@ -5,29 +5,22 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: rgba(22,94,59,1);
 `
 
 export const BlogBody = styled.div`
+  position: relative;
+  padding: 100px 0 0;
   width: 90%;
+  max-width: 570px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding: 60px 70px;
-  color: #fff4eb;
+  color: #000;
   box-sizing: border-box;
-  box-shadow: 0 0 30px -10px #00000029;
-
-  background: rgb(24,71,43);
-  background: url('/images/bg1.png'), linear-gradient(164deg, rgb(19,60,35) 0%, rgba(22,94,59,1) 100%);
-  background-position: center;
-  background-size: contain;
-  border: 1px solid #fff4eb;
 
   header{
-    width: 90%;
-    max-width: 1200px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,9 +34,19 @@ export const BlogBody = styled.div`
     }
 
     h1{
-      font-size: 50px;
-      line-height: 1.2em;
-      max-width: 610px;
+      font-size: 90px;
+      line-height: 1.1em;
+      font-weight: 100;
+      margin: 10px 0 10px;
+    }
+
+    h2{
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: #ff0025;
+      color: #fff;
+      padding: 3px 5px 3px 6px;
     }
 
     img{
@@ -56,18 +59,22 @@ export const BlogBody = styled.div`
     p{
       font-size: 20px;
       margin-top: 16px;
-      line-height: 1.7em;
-      max-width: 400px;
+      line-height: 1.3em;
+      max-width: 310px;
     }
   }
 
-  @media(max-width: 850px){
+  article + article{
+    margin-top: 120px;
+  }
+
+  @media(max-width: 570px){
     padding: 30px 15px;
     header img{
       display: none;
     }
     header h1{
-      font-size: 30px;
+      font-size: 60px;
     }
     header p{
       font-size: 18px;
@@ -78,69 +85,30 @@ export const BlogBody = styled.div`
 
 export const SocialNetworks = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  left: 5%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 
   a{
-    max-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     display: block;
     transition: all .3s;
   }
-
-  a:hover{
-    transform: scale(1.1);
-  }
-
+  
   a + a{
-    margin-top: 10px;
+    margin-left: 10px;
   }
 
   img{
-    width: 100%;
-    border-radius: 50%;
-    box-shadow: 0 6px 18px -3px rgb(10 35 20);
+    max-width: 30px;
+    max-height: 30px;
   }
 
-  @media(max-width: 650px){
-    position: relative;
-    flex-direction: row;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px 0;
-    border-top: 1px solid #fff4eb;
-    
-    a{
-      margin: 0 10px;
-    }
-
-    a + a{
-      margin-top: 0;
-    }
-    img{
-      box-shadow: 0 6px 18px -3px rgb(10 35 20 / 15%);
-    }
-  }
 `
-
-
-export const PostList = styled.div`
-  width: 90%;
-  max-width: 850px;
-  padding: 0;
-`
+export const PostList = styled.div``
 
 export const Post = styled.article`
-  border-top: 3px solid #fff4eb;
-  padding: 50px 0 0;
-  margin-bottom: 70px;
   box-sizing: border-box;
   position: relative;
 
@@ -151,46 +119,47 @@ export const Post = styled.article`
     margin-bottom: 20px;
 
     a{
-      width: 20%;
-      background-color: #fff4eb;
-      color: rgba(24,71,43,1);
+      position: absolute;
+      transform: translateX(-50%);
+      width: auto;
+      background-color: #ff0025;
+      color: #fff;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
       text-transform: uppercase;
       font-size: 13px;
-      padding: 10px 0;
-      box-shadow: 0 6px 18px -3px rgb(10,35,20);
+      padding: 15px;
       transition: all .4s;
+      font-weight: 400;
+      line-height: 1.4em;
+      text-align: center;
+      letter-spacing: 3px;
 
       &:hover{
-        background-color:#ff7300;
-        color: #fff4eb;
+        background-color:#e10021;
       }
     }
   }
 
-  h1{
+  h3{
     font-size: 30px;
     line-height: 1.3em;
-    max-width: 550px;
-    width: 70%;
-    margin-bottom: 3px;
-    font-weight: 700;
+    margin-bottom: 15px;
+    font-weight: 300;
   }
 
   img{
     width: 100%;
-    box-shadow: 0 6px 18px -3px rgb(10 35 20);
-    margin-bottom: 20px;
+    border: 1px solid #ff0025;
   }
 
   p{
     font-size: 18px;
     line-height: 1.5em;
     a{
-      color: #ff7300;
+      color: #ff0025;
     }
   }
 
@@ -200,41 +169,37 @@ export const Post = styled.article`
   
   > a{
     display: inline-block;
-    color: #fff4eb;
+    color: #ff0025;
     font-size: 13px;
-    margin-top: 20px;
+    margin-top: 15px;
     font-weight: 300;
-    text-transform: uppercase;
+    text-transform: lowercase;
     letter-spacing: 2px;
-    text-decoration: none;
-    border-left: 12px solid;
-    padding: 0 0 2px 10px;
     line-height: 1em;
     transition: all .4s;
-    padding-right: 20px;
 
     &:hover{
-      background-color: #ff7300;
-      border-color: #ff7300;
+      color: #990016;
     }
   }
 
   strong{
-    font-size: 16px;
-    color: #ff7300;
-    background-color: #fff4eb;
-    padding: 3px 5px;
+    font-size: 14px;
+    color: #ff0025;
+    background-color: transparent;
+    border: 2px solid #ff0025;
+    padding: 5.5px 5px 3px;
     margin-bottom: 14px;
     display: inline-block;
     font-weight: 400;
     line-height: 1em;
   }
   
-  @media (max-width: 1000px){
+  @media (max-width: 570px){
     div{
       flex-direction: column;
       align-items: flex-start;
-      margin-bottom: 0;
+      margin-bottom: 10px;
       a{
         display: none;
         width: auto;
@@ -243,21 +208,25 @@ export const Post = styled.article`
       }
     }
 
-    h1{
+    h3{
       width: 100%;
       margin-bottom: 20px;
-      font-size: 22px;
+      font-size: 24px;
     }
 
 
     strong{
       position: relative;
-      font-size: 18px;
-      margin-bottom: 30px;
+      font-size: 13px;
+      margin-bottom: 15px;
       display: block;
       transform: none;
-      font-weight: 300;
       letter-spacing: 2px;
+      width: fit-content;
+    }
+
+    p{
+      font-size: 15px;
     }
   }
 `
