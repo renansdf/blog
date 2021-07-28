@@ -6,7 +6,7 @@ export const apiEndpoint = 'https://defreitasreactblog.cdn.prismic.io/api/v2'
 
 // -- Access Token if the repository is not public
 // Generate a token in your dashboard and configure it here if your repository is private
-const accessToken = ''
+const accessToken = process.env.REACT_APP_PRISMIC_TOKEN
 
 // -- Link resolution rules
 // Manages the url links to internal Prismic documents
