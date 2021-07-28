@@ -1,11 +1,9 @@
-import React from 'react'
 import { Container } from './styles'
 import { Link } from 'react-router-dom'
 import githubIcon from '../../images/github.png'
 import linkedinIcon from '../../images/linkedin.png'
 import mailIcon from '../../images/mail.png'
 import logo from '../../images/logo-renan.png'
-
 
 const Footer = () => {
   return (
